@@ -1,5 +1,27 @@
 # repair
 
+## Run in docker
+
+To run a docker container.
+
+```bash
+# run repair
+# docker run --rm ghcr.io/royfrancis/star-repair:latest
+# docker run --rm ghcr.io/royfrancis/star-repair:latest analyze -h
+# docker run --rm ghcr.io/royfrancis/star-repair:latest evaluate -h
+
+# run with volume
+# docker run --rm -v ${PWD}:/work -u $(id -u):$(id -g) ghcr.io/royfrancis/star-repair:latest
+
+# example 
+# docker run --rm -v ${PWD}:/work -u $(id -u):$(id -g) ghcr.io/royfrancis/star-repair:latest analyze -i repair-counts.tsv -ap "^(IGH)" -bp "^(IGL)|^(IGK)" -mxo 5 -x 5 -b 100 -nb 1 -e 1500
+```
+
+To build a docker container. Clone the repo and run:
+
+```bash
+docker build -t ghcr.io/royfrancis/star-repair:latest .
+```
 
 ## Setup and installation
 
@@ -199,5 +221,3 @@ This will generate a few more files, with the same tag as before, in your output
 The `TAG_evauluation_result.tsv` gives you the pairs and whether they are
 correct or not, while the `TAG_evaluation_summary_all.tsv` summarize these
 results in terms of numbers and accuracy.
-
-
