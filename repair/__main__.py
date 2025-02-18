@@ -91,6 +91,10 @@ def main()->None:
     prs = parser()
     args = prs.parse_args()
 
+    if not args.command:
+        print("Usage: repair analyze -h or repair evaluate -h")
+        return
+
     try:
         run(args)
     except KeyboardInterrupt:
